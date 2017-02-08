@@ -1,13 +1,5 @@
 import * as React from 'react';
 
-// interface Props {}
-
-// const NoMatch: React.SFC<Props> = () => (
-//   <div>
-//     <h1>Page not found</h1>
-//   </div>
-// );
-
 class NoMatch extends React.Component<any, any> {
   static contextTypes = {
     router: React.PropTypes.shape({

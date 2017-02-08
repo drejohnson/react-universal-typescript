@@ -1,47 +1,48 @@
+import 'isomorphic-fetch';
+
 import * as React from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
-import { renderToString } from 'react-dom/server';
-import * as Helmet from 'react-helmet';
+import { ApolloProvider, renderToStringWithData } from 'react-apollo';
 import { styleSheet } from 'styled-components';
 
 import App from '../../ui/containers/App';
+import Html from '../views/Html';
+import { client } from '../../ui/utils/initClient';
+import configureStore from '../../ui/store/configureStore';
 
 export default (req, res) => {
   const context: any = {};
+  const store = configureStore();
 
-  const html = renderToString(
+  renderToStringWithData(
     <StaticRouter location={req.url} context={context}>
-      <App />
+      <ApolloProvider client={client} store={store}>
+        <App />
+      </ApolloProvider>
     </StaticRouter>
-  );
+  ).then((html) => {
+    if (context.url) {
+      return res.redirect(302, context.url);
+    }
 
-  if (context.url) {
-    return res.redirect(302, context.url);
-  }
+    const styles = styleSheet.getCSS();
+    const data = client.store.getState().apollo.data;
+    const state = { apollo: { data } };
 
-  const head = Helmet.rewind();
-  const styles = styleSheet.getCSS();
+    const markup = renderToStaticMarkup(
+      <Html
+        html={html}
+        state={state}
+        styles={styles}
+      />
+    );
 
-  return res
-    .status(context.status || 200)
-    .send(`
-      <!doctype html>
-      <html lang="en">
-        <head>
-          ${head.base.toString()}
-          ${head.title.toString()}
-          ${head.meta.toString()}
-          ${head.link.toString()}
-          ${head.script.toString()}
-          <meta content="width=device-width, initial-scale=1" name="viewport" />
-          <title>App</title>
-          <style>${styles}</style>
-        </head>
-        <body>
-          <div id="root">${html}</div>
-          <script src="${VENDOR_BUNDLE}"></script>
-          <script src="${CLIENT_BUNDLE}"></script>
-        </body>
-      </html>
-    `);
+    return res
+      .status(context.status || 200)
+      .send(`<!doctype html>${markup}`);
+  }).catch((error) => {
+    console.log(error);
+    res.sendStatus(500);
+  });
 };
