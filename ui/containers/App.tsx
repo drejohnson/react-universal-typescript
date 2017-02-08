@@ -7,6 +7,8 @@ import About from '../pages/About';
 import NoMatch from '../pages/NoMatch';
 import Header from '../components/Header';
 
+import './global-styles';
+
 interface Props {}
 
 const App: React.SFC<Props> = () => (
