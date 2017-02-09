@@ -2,12 +2,10 @@ import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import * as Helmet from 'react-helmet';
 
-import Home from '../pages/Home';
-import About from '../pages/About';
-import NoMatch from '../pages/NoMatch';
-import Header from '../components/Header';
-
-import './global-styles';
+import Home from 'ui/pages/Home';
+import About from 'ui/pages/About';
+import NoMatch from 'ui/pages/NoMatch';
+import Header from 'ui/components/Header';
 
 interface Props {}
 
@@ -28,9 +26,21 @@ const App: React.SFC<Props> = () => (
         { property: 'og:site', content: '@PHRESHR' },
         { property: 'og:creator', content: '@PHRESHR' },
         { property: 'og:image:width', content: '200' },
-        { property: 'og:image:height', content: '200' }
+        { property: 'og:image:height', content: '200' },
+        { name: 'apple-mobile-web-app-title', content: 'PHRESHR' },
+        { name: 'application-name', content: 'PHRESHR' },
+        { name: 'theme-color', content: '#2980b9' }
       ]}
       link={[
+        { rel: 'apple-touch-icon', sizes: '60x60', href: '/apple-touch-icon-60x60.png' },
+        { rel: 'apple-touch-icon', sizes: '72x72', href: '/apple-touch-icon-72x72.png' },
+        { rel: 'apple-touch-icon', sizes: '120x120', href: '/apple-touch-icon-120x120.png' },
+        { rel: 'apple-touch-icon', sizes: '152x152', href: '/apple-touch-icon-152x152.png' },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon-180x180.png' },
+        { rel: 'icon', type: 'image/png', href: '/favicon-icon-32x32.png', sizes: '32x32' },
+        { rel: 'icon', type: 'image/png', href: '/favicon-icon-16x16.png', sizes: '16x16' },
+        { rel: 'manifest', href: '/manifest.json' },
+        { rel: 'mask-icon', href: '/safari-pinned-tab.svg' },
         {rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Lato:300,400,700,900'}
       ]}
     />

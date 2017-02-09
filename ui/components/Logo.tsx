@@ -5,7 +5,9 @@ interface Props {}
 
 const Logo: React.SFC<Props> = () => (
   <div className="branding">
-    <Link to="/">App</Link>
+    <Link to="/">
+      <img src="/images/logo-yellow.svg" alt="PHRESHR logo"/>
+    </Link>
   </div>
 );
 

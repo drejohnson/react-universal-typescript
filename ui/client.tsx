@@ -4,9 +4,9 @@ import { ApolloProvider } from 'react-apollo';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 
-import App from './containers/App';
-import configureStore from './store/configureStore';
-import { client } from './utils/initClient';
+import App from 'ui/containers/App';
+import configureStore from 'ui/store/configureStore';
+import { client } from 'ui/utils/initClient';
 
 const initialState = window.__APOLLO_STATE__;
 const store = configureStore(initialState);

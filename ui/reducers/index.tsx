@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { client } from '../utils/initClient';
+import { client } from 'ui/utils/initClient';
 
 const apollo: any = client.reducer()
 

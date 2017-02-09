@@ -1,5 +1,7 @@
+import * as SWPrecacheWebpackPlugin from 'sw-precache-webpack-plugin';
 import * as AssetsPlugin from 'assets-webpack-plugin';
 import * as CompressionPlugin from 'compression-webpack-plugin';
+import * as CopyWebpackPlugin from 'copy-webpack-plugin';
 import * as WebpackMd5Hash from 'webpack-md5-hash';
 import * as merge from 'webpack-merge';
 import * as webpack from 'webpack';
@@ -22,39 +24,34 @@ export default merge({}, common, {
   output: {
     filename: `js/[name]${isProd ? '.[chunkhash:8]' : ''}.js`
   },
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          { loader: 'style-loader' },
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true
-            }
-          }
-        ],
-        include: /node_modules/
-      },
-      {
-        test: /\.(jpe?g|png|gif|ico|svg|webp)$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 10000,
-              name: `assets/images/[name]${isProd ? '.[hash:8]' : ''}.[ext]`
-            }
-          }
-        ]
-      }
-    ]
-  },
   plugins: [
-    // ...common.plugins,
     ...isProd ? [
+      new SWPrecacheWebpackPlugin(
+        {
+          cacheId: 'PHRESHR',
+          filename: 'service-worker.js',
+          // maximumFileSizeToCacheInBytes: 4194304,
+          // mergeStaticsConfig: true,
+          // minify: true,
+          staticFileGlobsIgnorePatterns: [/build\/.*\.map/],
+          staticFileGlobs: [
+            'build/static/**/*' // Precache all static files by default
+          ],
+          stripPrefix: 'build/static',
+          forceDelete: true,
+          runtimeCaching: [
+            // Example with different handlers
+            {
+              handler: 'fastest',
+              urlPattern: /[.](png|jpg|css)/
+            },
+            {
+              handler: 'networkFirst',
+              urlPattern: /.*/ //cache all files
+            }
+          ]
+        }
+      ),
       new webpack.optimize.UglifyJsPlugin({
         compress: {
           warnings: false
@@ -78,6 +75,10 @@ export default merge({}, common, {
       filename: 'assets.json',
       path: common.output.path
     }),
+    new CopyWebpackPlugin([{
+      from: 'ui/static',
+      to: 'static'
+    }]),
     new WebpackMd5Hash()
   ]
 });

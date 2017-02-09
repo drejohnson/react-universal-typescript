@@ -30,6 +30,7 @@ app
   .use(bodyParser.json())
   .use(morgan(isProd ? 'combined' : 'dev'))
   .use(express.static(path.resolve(__dirname, '../build')))
+  .use(express.static(path.join(__dirname, '../build/static'), { maxAge: 86400000 }))
   .use(renderMiddleware);
 
 app.listen(PORT, () => console.log(

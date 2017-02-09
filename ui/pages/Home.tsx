@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as Helmet from 'react-helmet';
 
-import EpisodeList from '../components/EpisodeList';
+import EpisodeList from 'ui/components/EpisodeList';
 
 interface Props {}
 

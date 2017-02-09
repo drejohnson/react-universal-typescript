@@ -6,10 +6,10 @@ import { StaticRouter } from 'react-router-dom';
 import { ApolloProvider, renderToStringWithData } from 'react-apollo';
 import { styleSheet } from 'styled-components';
 
-import App from '../../ui/containers/App';
-import Html from '../views/Html';
-import { client } from '../../ui/utils/initClient';
-import configureStore from '../../ui/store/configureStore';
+import App from 'ui/containers/App';
+import Html from 'server/views/Html';
+import { client } from 'ui/utils/initClient';
+import configureStore from 'ui/store/configureStore';
 
 export default (req, res) => {
   const context: any = {};

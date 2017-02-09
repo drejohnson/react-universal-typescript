@@ -1,7 +1,7 @@
 import { applyMiddleware, compose, createStore } from 'redux';
 
-import rootReducer from '../reducers';
-import { client } from '../utils/initClient';
+import rootReducer from 'ui/reducers';
+import { client } from 'ui/utils/initClient';
 
 export default (initialState?) => {
   let store;
