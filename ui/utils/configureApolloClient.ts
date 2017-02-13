@@ -15,10 +15,10 @@ networkInterface.use([{
 
 export default options => new ApolloClient(Object.assign({}, {
   networkInterface,
-  // dataIdFromObject: (result) => {
-  //   if (result.id && result.__typename) {
-  //     return result.__typename + result.id;
-  //   }
-  //   return null;
-  // }
+  dataIdFromObject: (result) => {
+    if (result.id && result.__typename) {
+      return result.__typename + result.id;
+    }
+    return null;
+  }
 }, options));
