@@ -8,11 +8,12 @@ import { styleSheet } from 'styled-components';
 
 import App from 'ui/containers/App';
 import Html from 'server/views/Html';
-import { client } from 'ui/utils/initClient';
+import configureApolloClient from 'ui/utils/configureApolloClient';
 import configureStore from 'ui/store/configureStore';
 
 export default (req, res) => {
   const context: any = {};
+  const client = configureApolloClient({ ssrMode: true });
   const store = configureStore();
 
   renderToStringWithData(
