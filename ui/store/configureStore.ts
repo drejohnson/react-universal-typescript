@@ -1,9 +1,7 @@
 import { applyMiddleware, compose, createStore } from 'redux';
-
 import rootReducer from 'ui/reducers';
-import { client } from 'ui/utils/initClient';
 
-export default (initialState?) => {
+export default (client, initialState?) => {
   let store;
 
   const middlewares = [
@@ -11,14 +9,15 @@ export default (initialState?) => {
   ];
 
   store = createStore(
-    rootReducer,
+    rootReducer(client),
     initialState,
     compose(
       applyMiddleware(...middlewares),
       typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION__
         ? window.__REDUX_DEVTOOLS_EXTENSION__()
         : f => f
-    ));
+    )
+  );
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers

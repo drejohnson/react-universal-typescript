@@ -1,5 +1,4 @@
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
-const isProd = process.env.NODE_ENV === 'production';
 
 const networkInterface = createNetworkInterface({
   uri: process.env.GRAPHQL_ENDPOINT || 'https://api.graph.cool/simple/v1/cixm67lmh1yjd0177j5cwt47t'
@@ -14,8 +13,12 @@ networkInterface.use([{
   }
 }]);
 
-export const client = new ApolloClient({
-  ssrMode: true,
+export default options => new ApolloClient(Object.assign({}, {
   networkInterface,
-  connectToDevTools: typeof window !== 'undefined' && !isProd
-});
+  dataIdFromObject: (result) => {
+    if (result.id && result.__typename) {
+      return result.__typename + result.id;
+    }
+    return null;
+  }
+}, options));

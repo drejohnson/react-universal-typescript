@@ -6,10 +6,17 @@ import { AppContainer } from 'react-hot-loader';
 
 import App from 'ui/containers/App';
 import configureStore from 'ui/store/configureStore';
-import { client } from 'ui/utils/initClient';
+import configureApolloClient from 'ui/utils/configureApolloClient';
 
+const isProd = process.env.NODE_ENV === 'production';
 const initialState = window.__APOLLO_STATE__;
-const store = configureStore(initialState);
+
+const client = configureApolloClient({
+  initialState,
+  connectToDevTools: typeof window !== 'undefined' && !isProd
+});
+
+const store = configureStore(client, initialState);
 
 render(
   <AppContainer>
