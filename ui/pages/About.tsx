@@ -5,7 +5,7 @@ interface Props {}
 
 const About: React.SFC<Props> = () => (
   <div>
-    <Helmet title='About' />
+    <Helmet title="About" />
     <h1>About</h1>
   </div>
 );
