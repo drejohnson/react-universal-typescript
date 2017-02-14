@@ -1,30 +1,26 @@
 import * as React from 'react';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
-import { propType } from 'graphql-anywhere';
+import { pure, compose, flattenProp } from 'recompose';
 
+import displayLoadingState from './Loading';
 import Episode from './Episode';
 
 interface Props {
-  data?: any;
+  allEpisodes: string[];
 }
 
-const EpisodeList: React.SFC<Props> = ({ data: {loading, allEpisodes} }) => {
-  if (loading) {
-    return (<div>Loading</div>);
-  } else {
-    return (
-      <div>
-        <h2>Episodes:</h2>
-        {allEpisodes.map(episode =>
-          <Episode key={episode.id} episode={episode}/>
-        )}
-      </div>
-    );
-  }
-};
+const enhance = flattenProp('data');
+const EpisodeList: React.SFC<Props> = enhance(({ allEpisodes }) =>
+  <div>
+    <h2>Episodes:</h2>
+    {allEpisodes.map(episode =>
+      <Episode key={episode.id} episode={episode}/>
+    )}
+  </div>
+);
 
-export default graphql(gql`
+const data = graphql(gql`
   query allEpisodes {
     allEpisodes {
       id
@@ -42,4 +38,10 @@ export default graphql(gql`
       }
     }
   }
-`)(EpisodeList);
+`);
+
+export default compose(
+  data,
+  displayLoadingState,
+  pure
+)(EpisodeList);

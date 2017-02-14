@@ -1,25 +1,30 @@
 import * as React from 'react';
+import { compose, lifecycle, pure, getContext } from 'recompose';
 
-class NoMatch extends React.Component<any, any> {
-  static contextTypes = {
-    router: React.PropTypes.shape({
-      staticContext: React.PropTypes.object
-    }).isRequired
-  }
+interface Props {}
 
-  public componentWillMount() {
-    if (this.context.router.staticContext) {
-      this.context.router.staticContext.status = 404;
+const NoMatch: React.SFC<Props> = () => (
+  <div>
+    <h1>Page not found</h1>
+  </div>
+);
+
+const contextTypes = {
+  router: React.PropTypes.shape({
+    staticContext: React.PropTypes.object
+  })
+};
+
+const componentLifecycle = lifecycle({
+  componentWillMount() {
+    if (this.props.router.staticContext) {
+      this.props.router.staticContext.status = 404;
     }
   }
+});
 
-  public render() {
-    return (
-      <div>
-        <h1>Page not found</h1>
-      </div>
-    );
-  }
-}
-
-export default NoMatch;
+export default compose(
+  getContext(contextTypes),
+  componentLifecycle,
+  pure
+)(NoMatch);
