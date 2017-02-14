@@ -1,5 +1,4 @@
-const IS_SERVER = typeof window === 'undefined';
-const IS_BROWSER = !IS_SERVER;
+const IS_BROWSER = typeof window !== 'undefined';
 
 let ReactGA;
 if (IS_BROWSER) {
