@@ -1,11 +1,15 @@
 import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { compose, lifecycle, pure, getContext } from 'recompose';
 import * as Helmet from 'react-helmet';
 
+import { configureAnalytics, pageView } from 'ui/utils/configureAnalytics';
 import Home from 'ui/pages/Home';
 import About from 'ui/pages/About';
 import NoMatch from 'ui/pages/NoMatch';
 import Header from 'ui/components/Header';
+
+configureAnalytics();
 
 interface Props {}
 
@@ -53,4 +57,13 @@ const App: React.SFC<Props> = () => (
   </div>
 );
 
-export default App;
+const componentLifecycle = lifecycle({
+  componentWillMount() {
+    pageView();
+  }
+});
+
+export default compose(
+  componentLifecycle,
+  pure
+)(App);
