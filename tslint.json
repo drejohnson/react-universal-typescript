@@ -28,6 +28,8 @@
     "member-ordering": [
       false
     ],
+    "arrow-parens": [true, "ban-single-arg-parens"],
+    "interface-name": [true, "never-prefix"],
     "object-literal-sort-keys": false,
     "no-shadowed-variable": false,
     "no-console": [
