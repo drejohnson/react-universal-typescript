@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { compose, lifecycle, pure, getContext } from 'recompose';
+import * as Helmet from 'react-helmet';
 
 interface Props {}
 
 const NoMatch: React.SFC<Props> = () => (
   <div>
+    <Helmet title="Page Not Found"/>
     <h1>Page not found</h1>
   </div>
 );
