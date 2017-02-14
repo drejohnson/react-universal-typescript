@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 interface Props {
-  episode: { show, title, description, imageThumbUrl, topics };
+  episode;
 }
 
 const Episode: React.SFC<Props> = ({ episode }) => (

@@ -7,11 +7,10 @@ import displayLoadingState from './Loading';
 import Episode from './Episode';
 
 interface Props {
-  allEpisodes: string[];
+  allEpisodes;
 }
 
-const enhance = flattenProp('data');
-const EpisodeList: React.SFC<Props> = enhance(({ allEpisodes }) =>
+const EpisodeList: React.SFC<Props> = ({ allEpisodes }) => (
   <div>
     <h2>Episodes:</h2>
     {allEpisodes.map(episode =>
@@ -43,5 +42,6 @@ const data = graphql(gql`
 export default compose(
   data,
   displayLoadingState,
+  flattenProp('data'),
   pure
 )(EpisodeList);
