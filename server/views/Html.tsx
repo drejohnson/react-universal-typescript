@@ -28,7 +28,6 @@ const Html: React.SFC<Props> = ({html, state, styles}) => (
     </head>
     <body>
       <div dangerouslySetInnerHTML={{ __html: html }} id="root" />
-      {/*{isProd && <script src="/service-worker.js" />}*/}
       { isProd &&
       <script dangerouslySetInnerHTML={{ __html: `
         if ('serviceWorker' in navigator) {

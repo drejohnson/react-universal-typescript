@@ -1,9 +1,7 @@
 import * as React from 'react';
-import gql from 'graphql-tag';
-import { graphql } from 'react-apollo';
 
 interface Props {
-  episode: { show: {title}, title, description, imageThumbUrl, topics};
+  episode: { show, title, description, imageThumbUrl, topics };
 }
 
 const Episode: React.SFC<Props> = ({ episode }) => (
@@ -19,4 +17,3 @@ const Episode: React.SFC<Props> = ({ episode }) => (
 );
 
 export default Episode;
-

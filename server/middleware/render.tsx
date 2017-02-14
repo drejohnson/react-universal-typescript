@@ -22,7 +22,7 @@ export default (req, res) => {
         <App />
       </ApolloProvider>
     </StaticRouter>
-  ).then((html) => {
+  ).then(html => {
     if (context.url) {
       return res.redirect(302, context.url);
     }
@@ -42,7 +42,7 @@ export default (req, res) => {
     return res
       .status(context.status || 200)
       .send(`<!doctype html>${markup}`);
-  }).catch((error) => {
+  }).catch(error => {
     console.log(error);
     res.sendStatus(500);
   });

@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-const Nav = () => (
+interface Props {}
+
+const Nav: React.SFC<Props> = () => (
   <nav>
     <Link to="/">Home</Link>
     <Link to="/about">About</Link>
