@@ -1,0 +1,8 @@
+query Show($id: ID) {
+  Show (id: $id) {
+    ...ShowEntry
+    episodes {
+      ...EpisodeEntry
+    }
+  }
+}

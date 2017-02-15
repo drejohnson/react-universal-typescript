@@ -1,0 +1,18 @@
+fragment EpisodeEntry on Episode {
+  id
+  title
+  description
+  imageThumbUrl
+  posterUrl
+  createdAt
+  videoUrl
+  createdAt
+  ...Topics
+}
+
+fragment Topics on Episode {
+  topics {
+    id
+    name
+  }
+}

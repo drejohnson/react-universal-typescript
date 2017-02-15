@@ -21,7 +21,8 @@
 ### Install 
 
 ```bash
-$ npm/yarn install
+$ npm install
+$ yarn
 ```
 
 **Run**
@@ -29,11 +30,40 @@ $ npm/yarn install
 - Developer server
 
 ```bash
-$ npm/yarn run start-dev
+$ npm run start-dev
+$ yarn run start-dev
 ```
 
 - Production server
 
 ```bash
 $ NODE_ENV=production npm run build && npm start
+```
+
+**Optimizing the GraphQL experience**
+
+- Install
+
+```bash
+$ npm install apollo-codegen graphql-document-collector -g
+$ yarn global add apollo-codegen graphql-document-collector
+```
+
+- Download schema
+
+```bash
+$ apollo-codegen download-schema ADD-ENDPOINT-HERE --output schema.json
+```
+
+- Generate type annotations for TypeScript
+
+```bash
+$ npm run generate-graphql-types
+$ yarn run generate-graphql-types
+```
+- Collect all .graphql files
+
+```bash
+$ npm run generate-graphql-documents
+$ yarn run generate-graphql-documents
 ```
