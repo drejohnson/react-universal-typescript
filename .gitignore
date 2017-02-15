@@ -3,6 +3,8 @@
 build/
 node_modules/
 
+.env
+
 # webpack-isomorphic-tools
 /webpack-stats.json
 /webpack-assets.json.

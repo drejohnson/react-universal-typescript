@@ -1,6 +1,8 @@
 import * as path from 'path';
 import * as webpack from 'webpack';
+import * as dotenv from 'dotenv';
 
+dotenv.config({ silent: true });
 const isProd = process.env.NODE_ENV === 'production';
 
 export default {
@@ -42,14 +44,9 @@ export default {
   plugins: [
     new webpack['EnvironmentPlugin']({
       NODE_ENV: 'development',
-      GRAPHQL_ENDPOINT: ''
+      GRAPHQL_ENDPOINT: null,
+      GA_TRACKING_ID: 'UA-XXXXXXXX-X'
     })
-    // new webpack.DefinePlugin({
-    //   'process.env': {
-    //     NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-    //     GRAPHQL_ENDPOINT: JSON.stringify(process.env.GRAPHQL_ENDPOINT)
-    //   }
-    // })
   ],
   resolve: {
     alias: {

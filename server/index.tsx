@@ -3,9 +3,11 @@ import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as compression from 'compression';
 import * as morgan from 'morgan';
+import * as dotenv from 'dotenv';
 
 import renderMiddleware from './middleware/render';
 
+dotenv.config({ silent: true });
 const app: express.Express = express();
 const ENV = process.env.NODE_ENV || 'development';
 const PORT: number = process.env.PORT || 8080;

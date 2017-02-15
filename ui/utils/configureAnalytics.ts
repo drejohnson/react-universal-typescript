@@ -7,7 +7,7 @@ if (IS_BROWSER) {
 
 export function configureAnalytics() {
   if (IS_BROWSER) {
-    ReactGA.initialize(process.env.GA_TRACKING_ID || 'UA-XXXXXXXX-X');
+    ReactGA.initialize(process.env.GA_TRACKING_ID);
   }
 }
 

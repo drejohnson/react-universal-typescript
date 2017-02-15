@@ -1,7 +1,7 @@
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
 
 const networkInterface = createNetworkInterface({
-  uri: process.env.GRAPHQL_ENDPOINT || 'https://api.graph.cool/simple/v1/cixm67lmh1yjd0177j5cwt47t'
+  uri: process.env.GRAPHQL_ENDPOINT
 });
 
 networkInterface.use([{
