@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 interface Props {}
 
 const Nav: React.SFC<Props> = () => (
   <nav>
-    <Link to="/">Home</Link>
-    <Link to="/about">About</Link>
+    <NavLink exact to="/" activeClassName="active">Home</NavLink>
+    <NavLink to="/about" activeClassName="active">About</NavLink>
   </nav>
 );
 
