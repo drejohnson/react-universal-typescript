@@ -5,7 +5,7 @@
   "scripts": {
     "analyze": "webpack --config webpack/webpack.client.ts --profile --json > stats.json",
     "generate-graphql-types": "apollo-codegen generate ui/**/*.graphql --schema schema.json --target ts --output ui/graphql/schema.ts",
-    "generate-graphql-documents": "graphql-document-collector ui/**/*.graphql > ui/graphql/documents.json",
+    "generate-graphql-documents": "cd ./ui/graphql; graphql-document-collector **/*.graphql > documents.json",
     "prebuild": "rimraf build/*; npm run generate-graphql-documents; npm run generate-graphql-types",
     "build": "npm run build:client && npm run build:server",
     "build:client": "webpack --progress --config webpack/webpack.client.ts",

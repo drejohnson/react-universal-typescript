@@ -2,8 +2,42 @@
 /* tslint:disable */
 
 export interface AllEpisodesQuery {
-  allEpisodes: Array< EpisodeEntryFragment & TopicsFragment & {
-    show: ShowEntryFragment,
+  allEpisodes: Array< {
+    id: string,
+    title: string,
+    description: string,
+    imageThumbUrl: string,
+    posterUrl: string | null,
+    createdAt: String | null,
+    videoUrl: string,
+    topics: Array< {
+      id: string,
+      name: string,
+    } > | null,
+    show: {
+      id: string,
+      title: string,
+      description: string,
+    } | null,
+  } >;
+}
+
+export interface AllShowsQuery {
+  allShows: Array< {
+    id: string,
+    title: string,
+    description: string,
+    episodes: Array< {
+      id: string,
+      title: string,
+      description: string,
+      imageThumbUrl: string,
+      videoUrl: string,
+      topics: Array< {
+        id: string,
+        name: string,
+      } > | null,
+    } > | null,
   } >;
 }
 
@@ -12,8 +46,23 @@ export interface EpisodeQueryVariables {
 }
 
 export interface EpisodeQuery {
-  Episode: EpisodeEntryFragment & TopicsFragment & {
-    show: ShowEntryFragment,
+  Episode: {
+    id: string,
+    title: string,
+    description: string,
+    imageThumbUrl: string,
+    posterUrl: string | null,
+    createdAt: String | null,
+    videoUrl: string,
+    topics: Array< {
+      id: string,
+      name: string,
+    } > | null,
+    show: {
+      id: string,
+      title: string,
+      description: string,
+    } | null,
   } | null;
 }
 

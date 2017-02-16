@@ -1,5 +1,5 @@
-query Episode($id: ID) {
-  Episode (id: $id) {
+query AllEpisodes {
+  allEpisodes {
     id
     title
     description
