@@ -1,6 +1,6 @@
 import * as React from 'react';
 import gql from 'graphql-tag';
-import { graphql } from 'react-apollo';
+import { withApollo, graphql } from 'react-apollo';
 import { pure, compose, flattenProp } from 'recompose';
 
 import displayLoadingState from './Loading';

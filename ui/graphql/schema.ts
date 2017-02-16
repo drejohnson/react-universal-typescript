@@ -1,6 +1,12 @@
 //  This file was automatically generated and should not be edited.
 /* tslint:disable */
 
+export interface AllEpisodesQuery {
+  allEpisodes: Array< EpisodeEntryFragment & TopicsFragment & {
+    show: ShowEntryFragment,
+  } >;
+}
+
 export interface EpisodeQueryVariables {
   id: string | null;
 }
