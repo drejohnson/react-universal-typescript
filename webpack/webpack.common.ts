@@ -18,7 +18,7 @@ export default {
         exclude: /node_modules/
       },
       {
-        test: /\.gql$/,
+        test: /\.(graphql|gql)$/,
         exclude: /node_modules/,
         use: 'graphql-tag/loader'
       },
