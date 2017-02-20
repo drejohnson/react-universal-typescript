@@ -1,3 +1,4 @@
+import * as WebFont from 'webfontloader';
 import * as React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ApolloProvider } from 'react-apollo';
@@ -11,6 +12,7 @@ import configureApolloClient from 'ui/utils/configureApolloClient';
 const isProd = process.env.NODE_ENV === 'production';
 const initialState = window.__APOLLO_STATE__;
 
+WebFont.load({google: {families: ['Lato:300,400,700,900']}});
 const client = configureApolloClient({
   initialState,
   connectToDevTools: typeof window !== 'undefined' && !isProd
