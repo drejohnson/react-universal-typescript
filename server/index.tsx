@@ -9,8 +9,12 @@ import renderMiddleware from './middleware/render';
 
 dotenv.config({ silent: true });
 const app: express.Express = express();
-const ENV = process.env.NODE_ENV || 'development';
-const PORT: number = process.env.PORT || 8080;
+// const ENV = process.env.NODE_ENV || 'development';
+// const PORT: number = process.env.PORT || 8080;
+const {
+  ENV = process.env.NODE_ENV || 'development',
+  PORT = 8080
+} = process.env;
 const isProd = ENV === 'production';
 
 if (isProd) {
