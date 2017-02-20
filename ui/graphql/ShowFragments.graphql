@@ -1,0 +1,5 @@
+fragment ShowEntry on Show {
+  id
+  title
+  description
+}
