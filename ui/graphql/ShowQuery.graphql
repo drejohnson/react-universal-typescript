@@ -1,6 +1,6 @@
 query Show($id: ID) {
   Show (id: $id) {
-    ...ShowEntry
+    ...Show
     episodes {
       ...EpisodeEntry
     }

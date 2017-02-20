@@ -1,21 +1,9 @@
 query AllEpisodes {
   allEpisodes {
-    id
-    title
-    description
-    imageThumbUrl
-    posterUrl
-    createdAt
-    videoUrl
-    createdAt
-    topics {
-      id
-      name
-    }
+    ...EpisodeEntry
+    ...Topics
     show {
-      id
-      title
-      description
+      ...Show
     }
   }
 }

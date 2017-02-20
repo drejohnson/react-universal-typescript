@@ -7,7 +7,6 @@ fragment EpisodeEntry on Episode {
   createdAt
   videoUrl
   createdAt
-  ...Topics
 }
 
 fragment Topics on Episode {

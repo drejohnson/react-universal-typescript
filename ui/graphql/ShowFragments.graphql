@@ -1,4 +1,4 @@
-fragment ShowEntry on Show {
+fragment Show on Show {
   id
   title
   description

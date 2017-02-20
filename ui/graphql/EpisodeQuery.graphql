@@ -1,17 +1,7 @@
 query Episode($id: ID) {
   Episode (id: $id) {
-    id
-    title
-    description
-    imageThumbUrl
-    posterUrl
-    createdAt
-    videoUrl
-    createdAt
-    topics {
-      id
-      name
-    }
+    ...EpisodeEntry
+    ...Topics
     show {
       id
       title
