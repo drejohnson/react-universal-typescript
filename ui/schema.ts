@@ -1,13 +1,68 @@
 //  This file was automatically generated and should not be edited.
 /* tslint:disable */
 
+export interface AllEpisodesQuery {
+  allEpisodes: Array< {
+    id: string,
+    title: string,
+    description: string,
+    imageThumbUrl: string,
+    posterUrl: string | null,
+    createdAt: String | null,
+    videoUrl: string,
+    topics: Array< {
+      id: string,
+      name: string,
+    } > | null,
+    show: {
+      id: string,
+      title: string,
+      description: string,
+    } | null,
+  } >;
+}
+
+export interface AllShowsQuery {
+  allShows: Array< {
+    id: string,
+    title: string,
+    description: string,
+    episodes: Array< {
+      id: string,
+      title: string,
+      description: string,
+      imageThumbUrl: string,
+      videoUrl: string,
+      topics: Array< {
+        id: string,
+        name: string,
+      } > | null,
+    } > | null,
+  } >;
+}
+
 export interface EpisodeQueryVariables {
   id: string | null;
 }
 
 export interface EpisodeQuery {
-  Episode: EpisodeEntryFragment & TopicsFragment & {
-    show: ShowEntryFragment,
+  Episode: {
+    id: string,
+    title: string,
+    description: string,
+    imageThumbUrl: string,
+    posterUrl: string | null,
+    createdAt: String | null,
+    videoUrl: string,
+    topics: Array< {
+      id: string,
+      name: string,
+    } > | null,
+    show: {
+      id: string,
+      title: string,
+      description: string,
+    } | null,
   } | null;
 }
 
