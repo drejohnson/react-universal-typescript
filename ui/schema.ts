@@ -2,27 +2,14 @@
 /* tslint:disable */
 
 export interface AllEpisodesQuery {
-  allEpisodes: Array< EpisodeEntryFragment & TopicsFragment & {
-    show: ShowFragment,
+  allEpisodes: Array< EpisodeInfoFragment & TopicsFragment & {
+    show: ShowInfoFragment,
   } >;
 }
 
 export interface AllShowsQuery {
-  allShows: Array< {
-    id: string,
-    title: string,
-    description: string,
-    episodes: Array< {
-      id: string,
-      title: string,
-      description: string,
-      imageThumbUrl: string,
-      videoUrl: string,
-      topics: Array< {
-        id: string,
-        name: string,
-      } > | null,
-    } > | null,
+  allShows: Array< ShowInfoFragment & {
+    episodes: Array<EpisodeInfoFragment & TopicsFragment>,
   } >;
 }
 
@@ -31,12 +18,8 @@ export interface EpisodeQueryVariables {
 }
 
 export interface EpisodeQuery {
-  Episode: EpisodeEntryFragment & TopicsFragment & {
-    show: {
-      id: string,
-      title: string,
-      description: string,
-    } | null,
+  Episode: EpisodeInfoFragment & TopicsFragment & {
+    show: ShowInfoFragment,
   } | null;
 }
 
@@ -45,12 +28,12 @@ export interface ShowQueryVariables {
 }
 
 export interface ShowQuery {
-  Show: ShowFragment & {
-    episodes: Array<EpisodeEntryFragment>,
+  Show: ShowInfoFragment & {
+    episodes: Array<EpisodeInfoFragment>,
   } | null;
 }
 
-export interface EpisodeEntryFragment {
+export interface EpisodeInfoFragment {
   id: string;
   title: string;
   description: string;
@@ -67,7 +50,7 @@ export interface TopicsFragment {
   } > | null;
 }
 
-export interface ShowFragment {
+export interface ShowInfoFragment {
   id: string;
   title: string;
   description: string;

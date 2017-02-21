@@ -1,4 +1,4 @@
-fragment EpisodeEntry on Episode {
+fragment EpisodeInfo on Episode {
   id
   title
   description

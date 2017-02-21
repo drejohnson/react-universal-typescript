@@ -1,18 +1,9 @@
 query AllShows {
   allShows {
-    id
-    title
-    description
+    ...ShowInfo
     episodes {
-      id
-      title
-      description
-      imageThumbUrl
-      videoUrl
-      topics {
-        id
-        name
-      }
+      ...EpisodeInfo
+      ...Topics
     }
   }
 }

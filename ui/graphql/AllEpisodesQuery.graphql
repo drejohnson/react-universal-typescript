@@ -1,9 +1,9 @@
 query AllEpisodes {
   allEpisodes {
-    ...EpisodeEntry
+    ...EpisodeInfo
     ...Topics
     show {
-      ...Show
+      ...ShowInfo
     }
   }
 }
