@@ -27,6 +27,10 @@ export default injectGlobal`
   ::selection {
     background: rgba(200,200,255,.1);
   }
+  a {
+    color: inherit;
+    text-decoration: inherit;
+  }
   h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
     text-transform: uppercase;
