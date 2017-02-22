@@ -8,19 +8,22 @@ import * as dotenv from 'dotenv';
 import renderMiddleware from './middleware/render';
 
 dotenv.config({ silent: true });
-const app: express.Express = express();
+
 const {
   ENV = process.env.NODE_ENV || 'development',
   PORT = 8080
 } = process.env;
+
 const isProd = ENV === 'production';
+
+const app: express.Express = express();
 
 if (isProd) {
   app.use(compression());
 } else {
   const {
     webpackDevMiddleware,
-    webpackHotMiddleware,
+    webpackHotMiddleware
   } = require('./middleware/webpack');
 
   app.use(webpackDevMiddleware);
