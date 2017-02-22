@@ -1,6 +1,21 @@
 declare var VENDOR_BUNDLE: boolean;
 declare var CLIENT_BUNDLE: boolean;
 
+declare module '*.svg' {
+  const content: string
+  export default content;
+}
+
+declare module "*.json" {
+  const value: any;
+  export = value;
+}
+
+declare module "*.graphql" {
+  const value: any;
+  export = value;
+}
+
 declare module 'react-hot-loader' {
   const AppContainer: any
   export { AppContainer }
