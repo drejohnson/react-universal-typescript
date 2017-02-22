@@ -1,3 +1,6 @@
+#import "./EpisodeFragments.graphql"
+#import "./ShowFragments.graphql"
+
 query AllEpisodes {
   allEpisodes {
     ...EpisodeInfo

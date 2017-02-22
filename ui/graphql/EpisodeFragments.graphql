@@ -3,7 +3,6 @@ fragment EpisodeInfo on Episode {
   title
   description
   imageThumbUrl
-  posterUrl
   createdAt
   videoUrl
   createdAt

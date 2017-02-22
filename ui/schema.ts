@@ -38,7 +38,6 @@ export interface EpisodeInfoFragment {
   title: string;
   description: string;
   imageThumbUrl: string;
-  posterUrl: string | null;
   createdAt: String | null;
   videoUrl: string;
 }
