@@ -54,8 +54,8 @@ export default (req, res) => {
     }
 
     const styles = styleSheet.getCSS();
-    const data = client.store.getState().apollo.data;
-    const state = { apollo: { data } };
+    const initialState = {[client.reduxRootKey]: client.getInitialState() };
+    const state = { ...initialState };
 
     const markup = renderToStaticMarkup(
       <Html

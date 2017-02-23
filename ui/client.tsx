@@ -30,6 +30,7 @@ WebFont.load({google: {families: ['Lato:300,400,700,900']}});
 
 const client = configureApolloClient({
   networkInterface: networkInterfaceWithSubscriptions,
+  ssrForceFetchDelay: 100,
   connectToDevTools: typeof window !== 'undefined' && !isProd
 });
 

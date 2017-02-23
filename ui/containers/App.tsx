@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { compose, lifecycle, pure, getContext } from 'recompose';
+import { compose, lifecycle, pure } from 'recompose';
 import * as Helmet from 'react-helmet';
 
 import { configureAnalytics, pageView } from 'ui/utils/configureAnalytics';
 import Home from 'ui/pages/Home';
 import About from 'ui/pages/About';
+import Shows from 'ui/pages/Shows';
 import Hello from 'ui/pages/Hello';
 import NoMatch from 'ui/pages/NoMatch';
 import Header from 'ui/components/Header';
@@ -52,7 +53,8 @@ const App: React.SFC<Props> = () => (
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path="/about" component={About} />
-      <Route path="/hello/:user" component={Hello}/>
+      {/*<Route path="/shows" component={Shows} />*/}
+      <Route path="/hello/:id/:uid" component={Hello}/>
       <Route component={NoMatch} />
     </Switch>
   </div>
