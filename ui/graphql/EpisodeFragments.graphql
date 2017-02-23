@@ -1,8 +1,10 @@
 fragment EpisodeInfo on Episode {
   id
+  uid
   title
   description
   imageThumbUrl
+  imageFeaturedUrl
   createdAt
   videoUrl
   createdAt
