@@ -1,9 +1,7 @@
+#import "./ShowFragments.graphql"
+
 query AllShows {
   allShows {
     ...ShowInfo
-    episodes {
-      ...EpisodeInfo
-      ...Topics
-    }
   }
 }
