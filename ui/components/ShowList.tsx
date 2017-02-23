@@ -4,6 +4,7 @@ import { pure, compose, flattenProp } from 'recompose';
 
 import displayLoadingState from './Loading';
 import Show from './Show';
+import * as SHOWS_QUERY from 'ui/graphql/AllShowsQuery.graphql';
 const graphqlDocuments = require('ui/graphql/documents.json');
 
 interface Props {
@@ -19,10 +20,11 @@ const ShowList: React.SFC<Props> = ({ allShows }) => (
   </div>
 );
 
-const data = graphql(graphqlDocuments['AllShowsQuery.graphql']);
+// const data = graphql(graphqlDocuments['AllShowsQuery.graphql']);
 
 export default compose(
-  data,
+  // data,
+  graphql(SHOWS_QUERY),
   displayLoadingState,
   flattenProp('data'),
   pure
