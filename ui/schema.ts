@@ -7,7 +7,6 @@ export interface AllEpisodesQuery {
     title: string,
     description: string,
     imageThumbUrl: string,
-    posterUrl: string | null,
     createdAt: String | null,
     videoUrl: string,
     topics: Array< {
@@ -81,7 +80,6 @@ export interface EpisodeEntryFragment extends TopicsFragment {
   title: string;
   description: string;
   imageThumbUrl: string;
-  posterUrl: string | null;
   createdAt: String | null;
   videoUrl: string;
 }
