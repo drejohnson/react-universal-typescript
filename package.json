@@ -8,7 +8,7 @@
     "persistgraphql": "persistgraphql ui --add_typename",
     "generate-graphql-types": "apollo-codegen generate ui/graphql/**/*.graphql --schema schema.json --target ts --output ui/schema.ts",
     "generate-graphql-documents": "cd ./ui/graphql; graphql-document-collector **/*.graphql > documents.json",
-    "prebuild": "rimraf build/*; npm run generate-graphql-documents; npm run generate-graphql-types",
+    "prebuild": "rimraf build/*",
     "build": "npm run build:client && npm run build:server",
     "build:client": "webpack --progress --config webpack/webpack.client.ts",
     "build:server": "webpack --progress --config webpack/webpack.server.ts",
