@@ -5,6 +5,7 @@ import * as Helmet from 'react-helmet';
 
 import { configureAnalytics, pageView } from 'ui/utils/configureAnalytics';
 import Home from 'ui/pages/Home';
+import Shows from 'ui/pages/Shows';
 import About from 'ui/pages/About';
 import NoMatch from 'ui/pages/NoMatch';
 import Header from 'ui/components/Header';
@@ -51,6 +52,7 @@ const App: React.SFC<Props> = () => (
     <Header />
     <Switch>
       <Route exact path="/" component={Home} />
+      <Route path="/shows" component={Shows}/>
       <Route path="/about" component={About} />
       <Route component={NoMatch} />
     </Switch>
