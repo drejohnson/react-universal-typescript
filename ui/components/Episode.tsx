@@ -7,7 +7,7 @@ interface Props {
 
 const Episode: React.SFC<Props> = ({ episode }) => (
   <article>
-    <Link to={`/hello/${episode.id}`}>
+    <Link to={`/hello/${episode.id}/${episode.uid}`}>
       <h3>{episode.show.title}</h3>
       <h1>{episode.title}</h1>
       <p>{episode.description}</p>
