@@ -1,20 +1,12 @@
+#import "./EpisodeFragments.graphql"
+#import "./ShowFragments.graphql"
+
 query AllEpisodes {
   allEpisodes {
-    id
-    title
-    description
-    imageThumbUrl
-    createdAt
-    videoUrl
-    createdAt
-    topics {
-      id
-      name
-    }
+    ...EpisodeInfo
+    ...Topics
     show {
-      id
-      title
-      description
+      ...ShowInfo
     }
   }
 }

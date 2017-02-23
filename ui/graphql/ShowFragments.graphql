@@ -1,5 +1,7 @@
-fragment ShowEntry on Show {
+fragment ShowInfo on Show {
   id
+  uid
   title
   description
+  posterImageUrl
 }

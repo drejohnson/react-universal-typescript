@@ -1,21 +1,12 @@
+#import "./EpisodeFragments.graphql"
+#import "./ShowFragments.graphql"
+
 query Episode($id: ID) {
   Episode (id: $id) {
-    id
-    title
-    description
-    imageThumbUrl
-    posterUrl
-    createdAt
-    videoUrl
-    createdAt
-    topics {
-      id
-      name
-    }
+    ...EpisodeInfo
+    ...Topics
     show {
-      id
-      title
-      description
+      ...ShowInfo
     }
   }
 }

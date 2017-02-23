@@ -1,12 +1,12 @@
-fragment EpisodeEntry on Episode {
+fragment EpisodeInfo on Episode {
   id
+  uid
   title
   description
   imageThumbUrl
   createdAt
   videoUrl
   createdAt
-  ...Topics
 }
 
 fragment Topics on Episode {

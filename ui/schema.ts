@@ -2,42 +2,13 @@
 /* tslint:disable */
 
 export interface AllEpisodesQuery {
-  allEpisodes: Array< {
-    id: string,
-    title: string,
-    description: string,
-    imageThumbUrl: string,
-    createdAt: String | null,
-    videoUrl: string,
-    topics: Array< {
-      id: string,
-      name: string,
-    } > | null,
-    show: {
-      id: string,
-      title: string,
-      description: string,
-    } | null,
+  allEpisodes: Array< EpisodeInfoFragment & TopicsFragment & {
+    show: ShowInfoFragment,
   } >;
 }
 
 export interface AllShowsQuery {
-  allShows: Array< {
-    id: string,
-    title: string,
-    description: string,
-    episodes: Array< {
-      id: string,
-      title: string,
-      description: string,
-      imageThumbUrl: string,
-      videoUrl: string,
-      topics: Array< {
-        id: string,
-        name: string,
-      } > | null,
-    } > | null,
-  } >;
+  allShows: Array<ShowInfoFragment>;
 }
 
 export interface EpisodeQueryVariables {
@@ -45,23 +16,8 @@ export interface EpisodeQueryVariables {
 }
 
 export interface EpisodeQuery {
-  Episode: {
-    id: string,
-    title: string,
-    description: string,
-    imageThumbUrl: string,
-    posterUrl: string | null,
-    createdAt: String | null,
-    videoUrl: string,
-    topics: Array< {
-      id: string,
-      name: string,
-    } > | null,
-    show: {
-      id: string,
-      title: string,
-      description: string,
-    } | null,
+  Episode: EpisodeInfoFragment & TopicsFragment & {
+    show: ShowInfoFragment,
   } | null;
 }
 
@@ -70,13 +26,14 @@ export interface ShowQueryVariables {
 }
 
 export interface ShowQuery {
-  Show: ShowEntryFragment & {
-    episodes: Array<EpisodeEntryFragment & TopicsFragment>,
+  Show: ShowInfoFragment & {
+    episodes: Array<EpisodeInfoFragment>,
   } | null;
 }
 
-export interface EpisodeEntryFragment extends TopicsFragment {
+export interface EpisodeInfoFragment {
   id: string;
+  uid: string | null;
   title: string;
   description: string;
   imageThumbUrl: string;
@@ -91,9 +48,11 @@ export interface TopicsFragment {
   } > | null;
 }
 
-export interface ShowEntryFragment {
+export interface ShowInfoFragment {
   id: string;
+  uid: string | null;
   title: string;
   description: string;
+  posterImageUrl: string | null;
 }
 /* tslint:enable */
