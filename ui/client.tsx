@@ -15,13 +15,14 @@ import getNetworkInterface from 'ui/transport';
 const isProd = process.env.NODE_ENV === 'production';
 const initialState = window.__APOLLO_STATE__;
 const PROJECT_ID = process.env.GRAPHCOOL_PROJECT_ID;
+const GRAPHQL_HOST = `https://api.graph.cool/simple/v1/${PROJECT_ID}`;
 
 const wsClient = new SubscriptionClient(`ws://subscriptions.graph.cool/${PROJECT_ID}`, {
   reconnect: true
 });
 
 const networkInterfaceWithSubscriptions = addGraphQLSubscriptions(
-  getNetworkInterface(),
+  getNetworkInterface(GRAPHQL_HOST),
   wsClient
 );
 
