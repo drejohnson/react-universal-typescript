@@ -1,7 +1,7 @@
 import { PersistedQueryNetworkInterface } from 'persistgraphql';
 import * as queryMap from '../extracted_queries.json';
 
-export default (host = '', headers = {}) => {
+export default (host?: string, headers = {}) => {
   return new PersistedQueryNetworkInterface({
     queryMap,
     uri: host,
