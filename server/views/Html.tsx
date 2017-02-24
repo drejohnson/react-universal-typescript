@@ -11,9 +11,10 @@ interface Props {
   html;
   state;
   styles;
+  asyncComponents;
 }
 
-const Html: React.SFC<Props> = ({html, state, styles}) => (
+const Html: React.SFC<Props> = ({html, state, styles, asyncComponents}) => (
   <html lang="en">
     <head>
       {head.base.toComponent()}
@@ -36,6 +37,12 @@ const Html: React.SFC<Props> = ({html, state, styles}) => (
       ` }} />
       }
       <script dangerouslySetInnerHTML={{ __html: `window.__APOLLO_STATE__ = ${serialize(state)}` }} />
+      {asyncComponents && asyncComponents.state ?
+          <script
+            dangerouslySetInnerHTML={{ __html: `
+              window.${asyncComponents.STATE_IDENTIFIER} = ${serialize(asyncComponents.state, {isJSON: true})};
+              `}} /> :
+            null}
       <script src={`${VENDOR_BUNDLE}`} />
       <script src={`${CLIENT_BUNDLE}`} />
     </body>

@@ -5,6 +5,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { ApolloProvider, renderToStringWithData } from 'react-apollo';
 import { styleSheet } from 'styled-components';
+import { withAsyncComponents } from 'react-async-component';
 import * as LRUCache from 'lru-cache';
 
 import App from 'ui/containers/App';
@@ -22,7 +23,7 @@ function getCacheKey(req) {
   return `${req.url}`;
 }
 
-export default (req, res) => {
+export default async (req, res, next) => {
   const context: any = {};
   const client = configureApolloClient({
     ssrMode: true
@@ -38,36 +39,49 @@ export default (req, res) => {
     return;
   }
 
-  renderToStringWithData(
+  const app = (
     <StaticRouter location={req.url} context={context}>
       <ApolloProvider client={client} store={store}>
         <App />
       </ApolloProvider>
     </StaticRouter>
+  );
+
+  const asyncSplit = await withAsyncComponents(app);
+  const {appWithAsyncComponents} = asyncSplit;
+
+  renderToStringWithData(
+    appWithAsyncComponents
   ).then(html => {
+
     if (context.url) {
       return res.redirect(302, context.url);
     }
 
     const styles = styleSheet.getCSS();
     const initialState = {[client.reduxRootKey]: client.getInitialState() };
-    const state = { ...initialState };
 
-    const markup = renderToStaticMarkup(
-      <Html
-        html={html}
-        state={state}
-        styles={styles}
-      />
-    );
+    const renderPage = (html, initialState, styles, {state = {}, STATE_IDENTIFIER = {}} = {}) => {
+      const markup = renderToStaticMarkup(
+        <Html
+          html={html}
+          state={initialState}
+          styles={styles}
+          asyncComponents={{state, STATE_IDENTIFIER}}
+        />
+      );
+      return `<!doctype html>${markup}`;
+    };
+
+    const page = renderPage(html, initialState, styles, asyncSplit);
 
     // Let's cache this page
     console.log(`CACHE MISS: ${key}`);
-    ssrCache.set(key, `<!doctype html>${markup}`);
+    ssrCache.set(key, page);
 
     return res
       .status(context.status || 200)
-      .send(`<!doctype html>${markup}`);
+      .send(page);
   }).catch(error => {
     console.log(error);
     res.sendStatus(500);

@@ -156,6 +156,10 @@
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/@types/source-map/-/source-map-0.5.0.tgz#dd34bbd8e32fe4e74f2e3d8ac07f8aa5b45a47ac"
 
+"@types/systemjs@^0.20.0":
+  version "0.20.0"
+  resolved "https://registry.yarnpkg.com/@types/systemjs/-/systemjs-0.20.0.tgz#a15eb63b3c0660fa5246262838f6bbeb3c51642f"
+
 "@types/tapable@*":
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/@types/tapable/-/tapable-0.2.3.tgz#0888b0f20cc7e58e1c22a1888b4e963eefaa810a"
@@ -3931,6 +3935,12 @@ react-apollo@^0.11.2:
   optionalDependencies:
     react-dom "0.14.x || 15.* || ^15.0.0"
 
+react-async-component@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/react-async-component/-/react-async-component-0.2.2.tgz#243e7551673e749fe7b90e2d8b675d3612c97a2a"
+  dependencies:
+    react-tree-walker "^1.0.0"
+
 react-base16-styling@^0.4.1:
   version "0.4.7"
   resolved "https://registry.yarnpkg.com/react-base16-styling/-/react-base16-styling-0.4.7.tgz#a3eaf884a0adfc1896455f6302ff75de72e51a2e"
@@ -4035,6 +4045,10 @@ react-side-effect@^1.1.0:
   dependencies:
     exenv "^1.2.1"
     shallowequal "^0.2.2"
+
+react-tree-walker@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-tree-walker/-/react-tree-walker-1.0.0.tgz#061f719232a5b77b01fbab21b8ee6a3ab7be7085"
 
 react@^15.4.2:
   version "15.4.2"

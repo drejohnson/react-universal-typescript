@@ -4,6 +4,7 @@ import * as React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ApolloProvider } from 'react-apollo';
 import { render } from 'react-dom';
+import { withAsyncComponents } from 'react-async-component';
 import { AppContainer } from 'react-hot-loader';
 
 import App from 'ui/containers/App';
@@ -22,16 +23,19 @@ const client = configureApolloClient({
 
 const store = configureStore(client, initialState);
 
-render(
+const app = (
   <AppContainer>
     <Router>
       <ApolloProvider client={client} store={store}>
         <App />
       </ApolloProvider>
     </Router>
-  </AppContainer>,
-  document.getElementById('root')
+  </AppContainer>
 );
+
+withAsyncComponents(app).then(({appWithAsyncComponents}) => {
+  render(appWithAsyncComponents, document.getElementById('root'));
+});
 
 if (module.hot) {
   module.hot.accept();

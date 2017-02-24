@@ -16,7 +16,8 @@
     "types": [
       "isomorphic-fetch",
       "node",
-      "webpack"
+      "webpack",
+      "systemjs"
     ]
   },
   "exclude": [
