@@ -7,10 +7,10 @@ import Episode from './Episode';
 import * as EPISODES_QUERY from 'ui/graphql/AllEpisodesQuery.graphql';
 
 interface Props {
-  data;
+  allEpisodes;
 }
 
-const EpisodeList: React.SFC<Props> = ({ data: { allEpisodes } }) => (
+const EpisodeList: React.SFC<Props> = ({ allEpisodes }) => (
   <div>
     <h2>Episodes:</h2>
     {allEpisodes.map(episode =>
@@ -22,6 +22,6 @@ const EpisodeList: React.SFC<Props> = ({ data: { allEpisodes } }) => (
 export default compose(
   graphql(EPISODES_QUERY),
   displayLoadingState,
-  // flattenProp('data'),
+  flattenProp('data'),
   pure
 )(EpisodeList);

@@ -8,6 +8,7 @@ import Home from 'ui/pages/Home';
 import About from 'ui/pages/About';
 import Shows from 'ui/pages/Shows';
 import Hello from 'ui/pages/Hello';
+import Episode from 'ui/pages/Episode';
 import NoMatch from 'ui/pages/NoMatch';
 import Header from 'ui/components/Header';
 
@@ -54,6 +55,7 @@ const App: React.SFC<Props> = () => (
       <Route exact path="/" component={Home} />
       <Route path="/about" component={About} />
       <Route path="/shows" component={Shows} />
+      <Route path="/episode/:id/:uid" component={Episode}/>
       <Route path="/hello/:id/:uid" component={Hello}/>
       <Route component={NoMatch} />
     </Switch>
