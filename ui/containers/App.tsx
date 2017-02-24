@@ -53,7 +53,7 @@ const App: React.SFC<Props> = () => (
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path="/about" component={About} />
-      {/*<Route path="/shows" component={Shows} />*/}
+      <Route path="/shows" component={Shows} />
       <Route path="/hello/:id/:uid" component={Hello}/>
       <Route component={NoMatch} />
     </Switch>

@@ -10,7 +10,6 @@ import * as LRUCache from 'lru-cache';
 import App from 'ui/containers/App';
 import Html from 'server/views/Html';
 import configureApolloClient from 'ui/utils/configureApolloClient';
-import getNetworkInterface from 'ui/transport';
 import configureStore from 'ui/store/configureStore';
 
 // This is where we cache our rendered HTML pages
@@ -24,12 +23,9 @@ function getCacheKey(req) {
 }
 
 export default (req, res) => {
-  const PROJECT_ID = process.env.GRAPHCOOL_PROJECT_ID;
-  const GRAPHQL_HOST = `https://api.graph.cool/simple/v1/${PROJECT_ID}`;
   const context: any = {};
   const client = configureApolloClient({
-    ssrMode: true,
-    networkInterface: getNetworkInterface(GRAPHQL_HOST, { cookie: req.header('Cookie') })
+    ssrMode: true
   });
   const store = configureStore(client);
 
