@@ -20,10 +20,8 @@ const ShowList: React.SFC<Props> = ({ allShows }) => (
   </div>
 );
 
-// const data = graphql(graphqlDocuments['AllShowsQuery.graphql']);
-
 export default compose(
-  // data,
+  // graphql(graphqlDocuments['AllShowsQuery.graphql']),
   graphql(SHOWS_QUERY),
   displayLoadingState,
   flattenProp('data'),

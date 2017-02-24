@@ -20,10 +20,8 @@ const EpisodeList: React.SFC<Props> = ({ allEpisodes }) => (
   </div>
 );
 
-// const data = graphql(graphqlDocuments['AllEpisodesQuery.graphql']);
-
 export default compose(
-  // data,
+  // graphql(graphqlDocuments['AllEpisodesQuery.graphql']),
   graphql(EPISODES_QUERY),
   displayLoadingState,
   flattenProp('data'),
