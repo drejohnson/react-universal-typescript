@@ -23,7 +23,7 @@ function getCacheKey(req) {
   return `${req.url}`;
 }
 
-export default async (req, res, next) => {
+export default async (req, res) => {
   const context: any = {};
   const client = configureApolloClient({
     ssrMode: true
