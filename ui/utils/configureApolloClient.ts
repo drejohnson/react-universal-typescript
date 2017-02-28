@@ -1,7 +1,8 @@
-import ApolloClient, { createNetworkInterface } from 'apollo-client';
+import ApolloClient, { createBatchingNetworkInterface, createNetworkInterface } from 'apollo-client';
 
-const networkInterface = createNetworkInterface({
-  uri: process.env.GRAPHQL_ENDPOINT
+const networkInterface = createBatchingNetworkInterface({
+  uri: process.env.GRAPHQL_ENDPOINT,
+  batchInterval: 10
 });
 
 networkInterface.use([{
@@ -20,5 +21,6 @@ export default options => new ApolloClient(Object.assign({}, {
       return result.__typename + result.id;
     }
     return null;
-  }
+  },
+  queryDeduplication: true
 }, options));
