@@ -1,28 +1,36 @@
 import * as React from 'react';
-import { withRouter } from 'react-router-dom';
+// import { withRouter } from 'react-router-dom';
 import { graphql } from 'react-apollo';
 import { pure, compose, flattenProp } from 'recompose';
 
 import displayLoadingState from './Loading';
-import Episode from './Episode';
+import EpisodeCard from './Episode';
 import * as EPISODE_QUERY from 'ui/graphql/EpisodeQuery.graphql';
 
 interface Props {
   Episode;
+  id;
 }
 
-const EpisodeDetail: React.SFC<Props> = ({ Episode }) => {
-  const episode = this.Episode;
-  console.log(episode);
+const EpisodeDetail: React.SFC<Props> = ({ Episode, id }) => {
+  const episode = Episode;
   return (
     <div>
-      <h2>Episode Detail:</h2>
+      {episode &&
+        <EpisodeCard key={episode.id} episode={episode} detail={true}/>
+      }
     </div>
   );
 };
 
 export default compose(
-  graphql(EPISODE_QUERY),
+  graphql(EPISODE_QUERY, {
+    options: params => ({
+      variables: {
+        id: params.id
+      }
+    })
+  }),
   displayLoadingState,
   flattenProp('data'),
   pure
