@@ -10,8 +10,7 @@ const Episode: React.SFC<Props> = ({match}) => (
   <div>
     <Helmet title="Episode"/>
     <div>
-      <h1>Episode: {match.params.uid}</h1>
-      <EpisodeDetail />
+      <EpisodeDetail id={match.params.id} />
     </div>
   </div>
 );
