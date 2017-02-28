@@ -47,7 +47,8 @@ const App: React.SFC<Props> = () => (
         { rel: 'icon', type: 'image/png', href: '/favicon-icon-32x32.png', sizes: '32x32' },
         { rel: 'icon', type: 'image/png', href: '/favicon-icon-16x16.png', sizes: '16x16' },
         { rel: 'manifest', href: '/manifest.json' },
-        { rel: 'mask-icon', href: '/safari-pinned-tab.svg' }
+        { rel: 'mask-icon', href: '/safari-pinned-tab.svg' },
+        { rel: 'stylesheet', href: 'http://vjs.zencdn.net/5.8.8/video-js.css' }
       ]}
     />
     <Header />
