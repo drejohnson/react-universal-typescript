@@ -1,8 +1,8 @@
 import ApolloClient, { createBatchingNetworkInterface, createNetworkInterface } from 'apollo-client';
 
-const networkInterface = createBatchingNetworkInterface({
+const networkInterface = createNetworkInterface({
   uri: process.env.GRAPHQL_ENDPOINT,
-  batchInterval: 10
+  // batchInterval: 10
 });
 
 networkInterface.use([{
