@@ -13,9 +13,20 @@ export default {
   module: {
     rules: [
       {
-        test: /\.ts(x?)$/,
+        enforce: 'pre',
+        test: /\.js$/,
+        use: 'source-map-loader',
+        exclude: /(node_modules)/
+      },
+      {
+        enforce: 'pre',
+        test: /\.tsx?$/,
+        use: 'source-map-loader'
+      },
+      {
+        test: /\.tsx?$/,
         use: 'awesome-typescript-loader',
-        exclude: /node_modules/
+        exclude: /(node_modules)/
       },
       {
         test: /\.(graphql|gql)$/,
