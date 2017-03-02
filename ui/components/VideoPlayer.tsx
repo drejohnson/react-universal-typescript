@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { compose, lifecycle, pure, toClass } from 'recompose';
+import * as ReactDOM from 'react-dom';
+import { compose, lifecycle, pure, toClass, withHandlers } from 'recompose';
 import * as videojs from 'video.js';
 
 export default class VideoPlayer extends React.Component<any, any> {
-  private player: any;
-  private videoNode: any;
+  public player;
+  public videoNode;
 
   public componentDidMount() {
     // instantiate video.js
@@ -28,6 +29,37 @@ export default class VideoPlayer extends React.Component<any, any> {
       <div data-vjs-player>
         <video ref={ node => this.videoNode = node } className="video-js"></video>
       </div>
-    )
+    );
   }
 }
+
+/*interface Props {}
+
+const VideoPlayer: React.SFC<Props> = () => {
+  return (
+    <div data-vjs-player>
+      <video id="videoPlayer" ref={ node => this.videoNode = node } className="video-js" />
+    </div>
+  );
+};
+
+const componentLifecycle = lifecycle({
+  async componentDidMount() {
+    // instantiate video.js
+    this.player = await videojs('#videoPlayer', this.props, function onPlayerReady() {
+      console.log(this.player());
+      console.log('onPlayerReady', this);
+    });
+  },
+  // destroy player on unmount
+  componentWillUnMount() {
+    if (this.player()) {
+      this.player().dispose();
+    }
+  }
+});
+
+export default compose(
+  componentLifecycle,
+  toClass
+)(VideoPlayer);*/
