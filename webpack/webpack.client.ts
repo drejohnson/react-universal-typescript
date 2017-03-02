@@ -80,5 +80,6 @@ export default merge({}, common, {
       to: 'static'
     }]),
     new WebpackMd5Hash()
-  ]
+  ],
+  devtool: isProd ? 'source-map' : 'inline-source-map'
 });
