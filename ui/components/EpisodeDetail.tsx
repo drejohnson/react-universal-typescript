@@ -1,10 +1,9 @@
 import * as React from 'react';
-// import { withRouter } from 'react-router-dom';
 import { graphql } from 'react-apollo';
 import { pure, compose, flattenProp } from 'recompose';
 
 import displayLoadingState from './Loading';
-import EpisodeCard from './Episode';
+import EpisodeCard from './EpisodeCard';
 import * as EPISODE_QUERY from 'ui/graphql/EpisodeQuery.graphql';
 
 interface Props {
