@@ -17,7 +17,7 @@
     "start-dev": "nodemon build/server.js"
   },
   "dependencies": {
-    "apollo-client": "^0.10.0",
+    "apollo-client": "^0.10.1",
     "body-parser": "^1.17.0",
     "compression": "1.6.2",
     "dotenv": "^4.0.0",
@@ -32,7 +32,7 @@
     "persistgraphql": "^0.3.0",
     "picturefill": "^3.0.2",
     "react": "^15.4.2",
-    "react-apollo": "^0.13.1",
+    "react-apollo": "^0.13.2",
     "react-async-component": "^0.2.2",
     "react-dom": "^15.4.2",
     "react-ga": "^2.1.2",
