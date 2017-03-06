@@ -3,18 +3,18 @@ import { graphql } from 'react-apollo';
 import { pure, compose, flattenProp } from 'recompose';
 
 import displayLoadingState from './Loading';
-import Show from './Show';
+import ShowCard from './ShowCard';
 import * as SHOWS_QUERY from 'ui/graphql/AllShowsQuery.graphql';
 
 interface Props {
-  data;
+  allShows;
 }
 
-const ShowList: React.SFC<Props> = ({ data: { allShows } }) => (
+const ShowList: React.SFC<Props> = ({ allShows }) => (
   <div>
     <h2>Shows:</h2>
     {allShows.map(show =>
-      <Show key={show.id} show={show}/>
+      <ShowCard key={show.id} show={show}/>
     )}
   </div>
 );
@@ -22,6 +22,6 @@ const ShowList: React.SFC<Props> = ({ data: { allShows } }) => (
 export default compose(
   graphql(SHOWS_QUERY),
   displayLoadingState,
-  // flattenProp('data'),
+  flattenProp('data'),
   pure
 )(ShowList);
