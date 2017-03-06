@@ -32,7 +32,7 @@ const Html: React.SFC<Props> = ({html, state, styles, asyncComponents}) => (
       { isProd &&
       <script dangerouslySetInnerHTML={{ __html: `
         if ('serviceWorker' in navigator) {
-          navigator.serviceWorker.register('service-worker.js');
+          navigator.serviceWorker.register('/service-worker.js');
         }
       ` }} />
       }
