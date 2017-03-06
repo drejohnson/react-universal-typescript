@@ -42,7 +42,8 @@ export default injectGlobal`
   }
   img {
     height: auto;
-    max-width: 100%;
+    /*max-width: 100%;*/
+    max-width: 250px;
     vertical-align: baseline;
   }
 `;
