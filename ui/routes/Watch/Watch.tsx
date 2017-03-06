@@ -6,13 +6,10 @@ interface Props {
   match;
 }
 
-const Episode: React.SFC<Props> = ({match}) => (
+const Watch: React.SFC<Props> = ({match}) => (
   <div>
-    <Helmet title="Episode"/>
-    <div>
-      <EpisodeDetail id={match.params.id} />
-    </div>
+    <EpisodeDetail id={match.params.id} />
   </div>
 );
 
-export default Episode;
+export default Watch;

@@ -4,7 +4,7 @@ import * as Helmet from 'react-helmet';
 
 interface Props {}
 
-const NoMatch: React.SFC<Props> = () => (
+const NotFound: React.SFC<Props> = () => (
   <div>
     <Helmet title="Page Not Found"/>
     <h1>Page not found</h1>
@@ -29,4 +29,4 @@ export default compose(
   getContext(contextTypes),
   componentLifecycle,
   pure
-)(NoMatch);
+)(NotFound);
