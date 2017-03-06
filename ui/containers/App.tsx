@@ -7,7 +7,7 @@ import { configureAnalytics, pageView } from 'ui/utils/configureAnalytics';
 import Home from 'ui/routes/Home';
 import About from 'ui/routes/About';
 import Shows from 'ui/routes/Shows';
-import Hello from 'ui/routes/Hello';
+import Show from 'ui/routes/Show';
 import Watch from 'ui/routes/Watch';
 import NotFound from 'ui/routes/NotFound';
 import Header from 'ui/components/Header';
@@ -66,7 +66,7 @@ const App: React.SFC<Props> = () => (
       <Route path="/about" component={About} />
       <Route path="/shows" component={Shows} />
       <Route path="/watch/:id/:uid" component={Watch}/>
-      <Route path="/hello/:id/:uid" component={Hello}/>
+      <Route path="/show/:id/:uid" component={Show}/>
       <Route component={NotFound} />
     </Switch>
   </div>
