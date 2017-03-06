@@ -3,14 +3,10 @@ fragment EpisodeInfo on Episode {
   uid
   title
   description
-  imageThumbUrl
-  imageFeaturedUrl
-  createdAt
+  thumbImageUrl
+  featureImageUrl
   videoUrl
   createdAt
-}
-
-fragment Topics on Episode {
   topics {
     id
     name

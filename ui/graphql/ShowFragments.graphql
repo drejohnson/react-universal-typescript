@@ -4,4 +4,5 @@ fragment ShowInfo on Show {
   title
   description
   posterImageUrl
+  featureImageUrl
 }

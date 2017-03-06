@@ -4,7 +4,6 @@
 query AllEpisodes {
   allEpisodes {
     ...EpisodeInfo
-    ...Topics
     show {
       ...ShowInfo
     }

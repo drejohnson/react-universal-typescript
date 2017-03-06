@@ -12,7 +12,7 @@ const ShowCard: React.SFC<Props> = ({ show, detail }) => {
       <div className="show-view">
         <section className="show-marquee">
           <div className="show-image">
-            <img src={show.posterImageUrl} alt={show.title}/>
+            <img src={show.featureImageUrl} alt={show.title}/>
           </div>
           <div className="show-info">
             <h1>{show.title}</h1>

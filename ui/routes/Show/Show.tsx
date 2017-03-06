@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as Helmet from 'react-helmet';
 import ShowDetail from 'ui/components/ShowDetail';
 
 interface Props {
