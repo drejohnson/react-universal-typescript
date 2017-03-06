@@ -23,17 +23,13 @@ const ShowCard: React.SFC<Props> = ({ show, detail }) => {
     );
   } else {
     return (
-      <article className="show-item">
-        <Link to={`/hello/${show.id}/${show.uid}`}>
+      <section className="show-view">
+        <Link to={`/show/${show.id}/${show.uid}`}>
           <img src={show.posterImageUrl} alt={show.title}/>
-        </Link>
-        <div className="show-item-details">
-          <Link to={`/hello/${show.id}/${show.uid}`}>
-            <h1>{show.title}</h1>
-          </Link>
+          <h1>{show.title}</h1>
           <p>{show.description}</p>
-        </div>
-      </article>
+        </Link>
+      </section>
     );
   }
 };
