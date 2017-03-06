@@ -4,12 +4,12 @@ import { compose, lifecycle, pure } from 'recompose';
 import * as Helmet from 'react-helmet';
 
 import { configureAnalytics, pageView } from 'ui/utils/configureAnalytics';
-import Home from 'ui/pages/Home';
-import About from 'ui/pages/About';
-import Shows from 'ui/pages/Shows';
-import Hello from 'ui/pages/Hello';
-import Episode from 'ui/pages/Episode';
-import NoMatch from 'ui/pages/NoMatch';
+import Home from 'ui/routes/Home';
+import About from 'ui/routes/About';
+import Shows from 'ui/routes/Shows';
+import Hello from 'ui/routes/Hello';
+import Watch from 'ui/routes/Watch';
+import NotFound from 'ui/routes/NotFound';
 import Header from 'ui/components/Header';
 
 configureAnalytics();
@@ -24,16 +24,25 @@ const App: React.SFC<Props> = () => (
       meta={[
         { charset: 'utf-8' },
         { name: 'description', content: 'PHRESHR' },
-        { property: 'og:site_name', content: 'PHRESHR' },
-        { property: 'og:image', content: '' },
-        { property: 'og:locale', content: 'en_US' },
+        // Facebook OG tags
         { property: 'og:title', content: 'PHRESHR' },
         { property: 'og:description', content: 'PHRESHR' },
-        { property: 'og:card', content: 'summary' },
-        { property: 'og:site', content: '@PHRESHR' },
-        { property: 'og:creator', content: '@PHRESHR' },
-        { property: 'og:image:width', content: '200' },
-        { property: 'og:image:height', content: '200' },
+        { property: 'og:url', content: 'https://phreshr.com' },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:site_name', content: 'PHRESHR' },
+        { property: 'og:image', content: '' },
+        { property: 'og:image:type', content: 'image/jpeg' },
+        { property: 'og:image:width', content: '1280' },
+        { property: 'og:image:height', content: '720' },
+        { property: 'og:locale', content: 'en_US' },
+        // Twitter tags
+        { property: 'twitter:title', content: 'PHRESHR' },
+        { property: 'twitter:description', content: 'PHRESHR' },
+        { property: 'twitter:url', content: 'https://phreshr.com' },
+        { property: 'twitter:card', content: 'summary' },
+        { property: 'twitter:site', content: 'phreshr' },
+        { property: 'twitter:image', content: '' },
+        { property: 'twitter:creator', content: '@PHRESHR' },
         { name: 'apple-mobile-web-app-title', content: 'PHRESHR' },
         { name: 'application-name', content: 'PHRESHR' },
         { name: 'theme-color', content: '#2980b9' }
@@ -56,9 +65,9 @@ const App: React.SFC<Props> = () => (
       <Route exact path="/" component={Home} />
       <Route path="/about" component={About} />
       <Route path="/shows" component={Shows} />
-      <Route path="/episode/:id/:uid" component={Episode}/>
+      <Route path="/watch/:id/:uid" component={Watch}/>
       <Route path="/hello/:id/:uid" component={Hello}/>
-      <Route component={NoMatch} />
+      <Route component={NotFound} />
     </Switch>
   </div>
 );

@@ -1549,6 +1549,13 @@ defaults@^1.0.2:
   dependencies:
     clone "^1.0.2"
 
+define-properties@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/define-properties/-/define-properties-1.1.2.tgz#83a73f2fea569898fb737193c8f873caf6d45c94"
+  dependencies:
+    foreach "^2.0.5"
+    object-keys "^1.0.8"
+
 del@^2.0.2, del@^2.2.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/del/-/del-2.2.2.tgz#c12c981d067846c84bcaf862cff930d907ffd1a8"
@@ -2107,6 +2114,10 @@ for-own@^0.1.4:
   dependencies:
     for-in "^1.0.1"
 
+foreach@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/foreach/-/foreach-2.0.5.tgz#0bee005018aeb260d0a3af3ae658dd0136ec1b99"
+
 forever-agent@~0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/forever-agent/-/forever-agent-0.6.1.tgz#fbc71f0c41adeb37f96c577ad1ed42d8fdacca91"
@@ -2168,6 +2179,10 @@ fstream@^1.0.0, fstream@^1.0.2, fstream@~1.0.10:
     inherits "~2.0.0"
     mkdirp ">=0.5 0"
     rimraf "2"
+
+function-bind@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.0.tgz#16176714c801798e4e8f2cf7f7529467bb4a5771"
 
 gauge@~2.7.1:
   version "2.7.3"
@@ -3541,6 +3556,18 @@ object-assign@^3.0.0:
 object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
+
+object-keys@^1.0.10, object-keys@^1.0.8:
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/object-keys/-/object-keys-1.0.11.tgz#c54601778ad560f1142ce0e01bcca8b56d13426d"
+
+object.assign@^4.0.3:
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/object.assign/-/object.assign-4.0.4.tgz#b1c9cc044ef1b9fe63606fc141abbb32e14730cc"
+  dependencies:
+    define-properties "^1.1.2"
+    function-bind "^1.1.0"
+    object-keys "^1.0.10"
 
 object.omit@^2.0.0:
   version "2.0.1"
@@ -5183,7 +5210,7 @@ verror@1.3.6:
   dependencies:
     extsprintf "1.0.2"
 
-video.js@^5.10.1:
+video.js@^5.0.0, video.js@^5.10.1, video.js@^5.2.0, video.js@^5.5.3:
   version "5.18.0"
   resolved "https://registry.yarnpkg.com/video.js/-/video.js-5.18.0.tgz#bc3426d9a4e63d6edfe684447b6c030d81212b2a"
   dependencies:
@@ -5210,12 +5237,26 @@ video.js@^6.0.0-RC.2:
     videojs-vtt.js "0.12.1"
     xhr "2.3.3"
 
+videojs-chromecast@^2.0.8:
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/videojs-chromecast/-/videojs-chromecast-2.0.8.tgz#55e2911cf5cc427974c1d8e80d4d22124d152ef9"
+  dependencies:
+    global "^4.3.0"
+    object.assign "^4.0.3"
+    video.js "^5.0.0"
+
 videojs-contrib-ads@^4.2.4:
   version "4.2.4"
   resolved "https://registry.yarnpkg.com/videojs-contrib-ads/-/videojs-contrib-ads-4.2.4.tgz#3b50cdfb7e3869f3c3641712f83533cc01361915"
   dependencies:
     browserify-versionify "^1.0.6"
     video.js "^5.10.1"
+
+videojs-dock@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/videojs-dock/-/videojs-dock-2.0.3.tgz#6296ebf96de9eeb7ae28e512b8381572dfecf05f"
+  dependencies:
+    video.js "^5.5.3"
 
 videojs-font@2.0.0:
   version "2.0.0"
@@ -5226,6 +5267,20 @@ videojs-ie8@1.1.2:
   resolved "https://registry.yarnpkg.com/videojs-ie8/-/videojs-ie8-1.1.2.tgz#a23d3d8608ad7192b69c6077fc4eb848998d35d9"
   dependencies:
     es5-shim "^4.5.1"
+
+videojs-playlist-ui@^2.3.2:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/videojs-playlist-ui/-/videojs-playlist-ui-2.3.2.tgz#9ecc157b11d3615cc545260e698726b5da9f360e"
+  dependencies:
+    video.js "^5.2.0"
+
+videojs-playlist@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/videojs-playlist/-/videojs-playlist-3.0.2.tgz#6743430a9256c056332b01063cde3e5e4996bbd1"
+  dependencies:
+    browserify-versionify "^1.0.6"
+    global "^4.3.0"
+    video.js "^5.10.1"
 
 videojs-swf@5.2.0:
   version "5.2.0"
