@@ -54,9 +54,9 @@ export default {
   },
   plugins: [
     new webpack['EnvironmentPlugin']({
-      NODE_ENV: 'development',
-      GRAPHQL_ENDPOINT: null,
-      GA_TRACKING_ID: 'UA-XXXXXXXX-X'
+      NODE_ENV: JSON.stringify(process.env.NODE_ENV) || 'development',
+      GRAPHQL_ENDPOINT: JSON.stringify(process.env.GRAPHQL_ENDPOINT),
+      GA_TRACKING_ID: JSON.stringify(process.env.GA_TRACKING_ID)
     })
   ],
   resolve: {

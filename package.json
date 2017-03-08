@@ -13,8 +13,8 @@
     "build:client": "webpack --progress --config webpack/webpack.client.ts",
     "build:server": "webpack --progress --config webpack/webpack.server.ts",
     "start": "node build/server.js",
-    "prestart-dev": "npm run build",
-    "start-dev": "nodemon build/server.js"
+    "predev": "npm run build",
+    "dev": "nodemon build/server.js"
   },
   "dependencies": {
     "apollo-client": "^0.10.1",
