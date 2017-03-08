@@ -13,8 +13,10 @@ const isProd = process.env.NODE_ENV === 'production';
 export default merge({}, common, {
   name: 'client',
   entry: {
-    client: [
-      ...!isProd && ['webpack-hot-middleware/client'],
+    client: isProd ? [
+      './ui/client'
+    ] : [
+      'webpack-hot-middleware/client',
       './ui/client'
     ]
   },
