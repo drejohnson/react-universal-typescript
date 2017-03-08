@@ -12,6 +12,7 @@
     "build": "npm run build:client && npm run build:server",
     "build:client": "webpack --progress --config webpack/webpack.client.ts",
     "build:server": "webpack --progress --config webpack/webpack.server.ts",
+    "prestart": "NODE_ENV=production npm run build:client && node build/server",
     "start": "node build/server.js",
     "predev": "npm run build",
     "dev": "nodemon build/server.js"
