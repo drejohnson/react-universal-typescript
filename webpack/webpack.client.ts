@@ -6,18 +6,15 @@ import * as WebpackMd5Hash from 'webpack-md5-hash';
 import * as merge from 'webpack-merge';
 import * as webpack from 'webpack';
 
-import common from './webpack.common';
+import common from './common';
 
 const isProd = process.env.NODE_ENV === 'production';
 
 export default merge({}, common, {
   name: 'client',
   entry: {
-    client: isProd ? [
-      './ui/client'
-    ] : [
-      'react-hot-loader/patch',
-      'webpack-hot-middleware/client',
+    client: [
+      ...!isProd && ['webpack-hot-middleware/client'],
       './ui/client'
     ]
   },

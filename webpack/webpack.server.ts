@@ -2,7 +2,7 @@ import * as nodeExternals from 'webpack-node-externals';
 import * as merge from 'webpack-merge';
 import * as webpack from 'webpack';
 
-import common from './webpack.common';
+import common from './common';
 
 const isProd = process.env.NODE_ENV === 'production';
 
