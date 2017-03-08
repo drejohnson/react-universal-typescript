@@ -5,12 +5,14 @@ import EpisodeList from 'ui/components/EpisodeList';
 
 interface Props {}
 
-const Home: React.SFC<Props> = () => (
-  <div>
-    <Helmet title="Home"/>
-    <h1>Home</h1>
-    <EpisodeList />
-  </div>
-);
+function Home() {
+  return (
+    <div>
+      <Helmet title="Home"/>
+      <h1>Home</h1>
+      <EpisodeList />
+    </div>
+  );
+};
 
 export default Home;

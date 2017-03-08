@@ -1,22 +1,20 @@
 import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { compose, lifecycle, pure } from 'recompose';
+import { compose, lifecycle } from 'recompose';
 import * as Helmet from 'react-helmet';
 
 import { configureAnalytics, pageView } from 'ui/utils/configureAnalytics';
-import Home from 'ui/routes/Home';
-import About from 'ui/routes/About';
-import Shows from 'ui/routes/Shows';
-import Show from 'ui/routes/Show';
-import Watch from 'ui/routes/Watch';
-import NotFound from 'ui/routes/NotFound';
+import Home from 'ui/pages/Home';
+import About from 'ui/pages/About';
+import Shows from 'ui/pages/Shows';
+import Show from 'ui/pages/Show';
+import Watch from 'ui/pages/Watch';
+import NotFound from 'ui/pages/NotFound';
 import Header from 'ui/components/Header';
 
 configureAnalytics();
 
-interface Props {}
-
-const App: React.SFC<Props> = () => (
+const App: React.SFC<any> = () => (
   <div>
     <Helmet
       titleTemplate="%s - PHRESHR"
@@ -79,6 +77,5 @@ const componentLifecycle = lifecycle({
 });
 
 export default compose(
-  componentLifecycle,
-  pure
+  componentLifecycle
 )(App);

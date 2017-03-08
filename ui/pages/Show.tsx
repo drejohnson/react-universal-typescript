@@ -5,11 +5,13 @@ interface Props {
   match;
 }
 
-const Show: React.SFC<Props> = ({match}) => (
-  <div>
-    <h1>Show</h1>
-    <ShowDetail id={match.params.id} />
-  </div>
-);
+function Show({match}) {
+  return (
+    <div>
+      <h1>Show</h1>
+      <ShowDetail id={match.params.id} />
+    </div>
+  );
+}
 
 export default Show;

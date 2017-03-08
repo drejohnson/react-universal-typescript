@@ -3,11 +3,13 @@ import * as Helmet from 'react-helmet';
 
 interface Props {}
 
-const About: React.SFC<Props> = () => (
-  <div>
-    <Helmet title="About" />
-    <h1>About</h1>
-  </div>
-);
+function About() {
+  return (
+    <div>
+      <Helmet title="About" />
+      <h1>About</h1>
+    </div>
+  );
+}
 
 export default About;

@@ -1,32 +1,30 @@
 import * as React from 'react';
-import { compose, lifecycle, pure, getContext } from 'recompose';
+import { compose, lifecycle, pure, setPropTypes } from 'recompose';
 import * as Helmet from 'react-helmet';
 
-interface Props {}
-
-const NotFound: React.SFC<Props> = () => (
+const NotFound = () => (
   <div>
     <Helmet title="Page Not Found"/>
     <h1>Page not found</h1>
   </div>
 );
 
-const contextTypes = {
-  router: React.PropTypes.shape({
+const propTypes = {
+  history: React.PropTypes.shape({
     staticContext: React.PropTypes.object
-  })
+  }).isRequired
 };
 
 const componentLifecycle = lifecycle({
   componentWillMount() {
-    if (this.props.router.staticContext) {
-      this.props.router.staticContext.status = 404;
+    if (this.props.history.staticContext) {
+      this.props.history.staticContext.status = 404;
     }
   }
 });
 
 export default compose(
-  getContext(contextTypes),
+  setPropTypes(propTypes),
   componentLifecycle,
   pure
 )(NotFound);
