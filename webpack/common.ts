@@ -29,6 +29,14 @@ export default {
         exclude: /(node_modules)/
       },
       {
+        test: /\.css?$/,
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader' }
+        ],
+        exclude: /(node_modules)/
+      },
+      {
         test: /\.(graphql|gql)$/,
         exclude: /node_modules/,
         use: 'graphql-tag/loader'
