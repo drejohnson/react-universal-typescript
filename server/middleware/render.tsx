@@ -6,7 +6,6 @@ import { StaticRouter } from 'react-router-dom';
 import { ApolloProvider, renderToStringWithData } from 'react-apollo';
 import { styleSheet } from 'styled-components';
 import * as LRUCache from 'lru-cache';
-import * as serialize from 'serialize-javascript';
 
 import App from 'ui/containers/App';
 import Html from 'server/views/Html';
@@ -67,23 +66,6 @@ export default (req, res) => {
     return res
       .status(context.status || 200)
       .send(`<!doctype html>${markup}`);
-      // .send(`
-      //   <!doctype html>
-      //   <html lang="en">
-      //     <head>
-      //       <meta charset="utf-8" />
-      //       <meta content="width=device-width, initial-scale=1" name="viewport" />
-      //       <title>React Starter</title>
-      //       <style>${styles}</style>
-      //     </head>
-      //     <body>
-      //       <div id="root">${html}</div>
-      //       <script>window.__APOLLO_STATE__ = ${serialize(state)}</script>
-      //       <script src="${VENDOR_BUNDLE}"></script>
-      //       <script src="${CLIENT_BUNDLE}"></script>
-      //     </body>
-      //   </html>
-      // `);
   }).catch(error => {
     console.log(error);
     res.sendStatus(500);
