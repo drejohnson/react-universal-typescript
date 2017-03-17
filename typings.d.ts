@@ -1,6 +1,8 @@
 declare var VENDOR_BUNDLE: boolean;
 declare var CLIENT_BUNDLE: boolean;
 
+declare var videojs;
+
 declare module '*.svg' {
   const content: string
   export default content;
