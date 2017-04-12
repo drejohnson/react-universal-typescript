@@ -1,6 +1,6 @@
 {
-  "name": "PHRESHR",
-  "short_name": "PHRESHR",
+  "name": "React Starter Typescript",
+  "short_name": "React Starter Typescript",
   "icons": [{
     "src": "/android-chrome-192x192.png",
     "sizes": "192x192",

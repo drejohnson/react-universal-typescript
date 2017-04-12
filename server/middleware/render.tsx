@@ -10,22 +10,22 @@ import * as LRUCache from 'lru-cache';
 import App from 'ui/containers/App';
 import Html from 'server/views/Html';
 import configureApolloClient from 'ui/utils/configureApolloClient';
-import configureStore from 'ui/store/configureStore';
+
+import 'ui/styles/global-styles';
 
 // This is where we cache our rendered HTML pages
 const ssrCache = new LRUCache({
   max: 100,
-  maxAge: 1000 * 60 * 60 // 1hour
+  maxAge: 1000 * 60 * 60, // 1hour
 });
 
 function getCacheKey(req) {
   return `${req.url}`;
 }
 
-export default (req, res) => {
+export default async (req, res) => {
   const context: any = {};
   const client = configureApolloClient({ ssrMode: true });
-  const store = configureStore(client);
 
   const key = getCacheKey(req);
 
@@ -36,15 +36,15 @@ export default (req, res) => {
     return;
   }
 
-  renderToStringWithData(
-    <StaticRouter location={req.url} context={context}>
-      <ApolloProvider client={client} store={store}>
+  await renderToStringWithData(
+    <ApolloProvider client={client}>
+      <StaticRouter location={req.url} context={context}>
         <App />
-      </ApolloProvider>
-    </StaticRouter>
+      </StaticRouter>
+    </ApolloProvider>,
   ).then(html => {
     if (context.url) {
-      return res.redirect(302, context.url);
+      return res.redirect(context.status, context.url);
     }
 
     const styles = styleSheet.getCSS();
@@ -56,7 +56,7 @@ export default (req, res) => {
         html={html}
         state={state}
         styles={styles}
-      />
+      />,
     );
 
     // Let's cache this page

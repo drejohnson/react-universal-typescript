@@ -1,7 +1,0 @@
-#import "./ShowFragments.graphql"
-
-query AllShows {
-  allShows {
-    ...ShowInfo
-  }
-}

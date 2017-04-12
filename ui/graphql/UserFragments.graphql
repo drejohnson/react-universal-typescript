@@ -1,0 +1,4 @@
+fragment CurrentUserObject on User {
+  id
+  name
+}

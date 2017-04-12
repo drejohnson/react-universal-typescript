@@ -16,8 +16,9 @@
     "types": [
       "isomorphic-fetch",
       "node",
-      "webpack",
-      "systemjs"
+      "react-helmet",
+      "systemjs",
+      "webpack"
     ]
   },
   "exclude": [

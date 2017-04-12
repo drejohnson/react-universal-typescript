@@ -14,27 +14,44 @@ export default merge({}, common, {
   name: 'client',
   entry: {
     client: isProd ? [
-      './ui/client'
+      './client',
     ] : [
-      'webpack-hot-middleware/client',
-      './ui/client'
-    ]
+      'react-hot-loader/patch',
+      'webpack-hot-middleware/client?reload=true',
+      './client',
+    ],
   },
   output: {
-    filename: `js/[name]${isProd ? '.[chunkhash:8]' : ''}.js`
+    filename: `js/[name]${isProd ? '.[chunkhash:8]' : ''}.js`,
   },
   plugins: [
-    ...isProd ? [
-      new SWPrecacheWebpackPlugin(
-        {
-          cacheId: 'PHRESHR',
+    ...(isProd
+      ? [
+        new AssetsPlugin({
+          filename: 'assets.json',
+          path: common.output.path,
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+          compress: {
+            warnings: false,
+          },
+        }),
+        new CompressionPlugin({
+          asset: '[path].gz[query]',
+          algorithm: 'gzip',
+          test: /\.js$|\.html$/,
+          threshold: 10240,
+          minRatio: 0.8,
+        }),
+        new SWPrecacheWebpackPlugin({
+          cacheId: 'spottieottiedopaliscious',
           filename: 'service-worker.js',
           // maximumFileSizeToCacheInBytes: 4194304,
           // mergeStaticsConfig: true,
           // minify: true,
           staticFileGlobsIgnorePatterns: [/build\/.*\.map/],
           staticFileGlobs: [
-            'build/static/**/*' // Precache all static files by default
+            'build/static/**/*', // Precache all static files by default
           ],
           stripPrefix: 'build/static',
           forceDelete: true,
@@ -42,43 +59,29 @@ export default merge({}, common, {
             // Example with different handlers
             {
               handler: 'fastest',
-              urlPattern: /[.](png|jpg|css)/
+              urlPattern: /[.](png|jpg|css)/,
             },
             {
               handler: 'networkFirst',
-              urlPattern: /.*/ //cache all files
-            }
-          ]
-        }
-      ),
-      new webpack.optimize.UglifyJsPlugin({
-        compress: {
-          warnings: false
-        }
-      }),
-      new CompressionPlugin({
-        asset: '[path].gz[query]',
-        algorithm: 'gzip',
-        test: /\.js$|\.html$/,
-        threshold: 10240,
-        minRatio: 0.8
-      })
-    ] : [
-      new webpack.HotModuleReplacementPlugin()
-    ],
+              urlPattern: /.*/, // cache all files
+            },
+          ],
+        }),
+      ]
+      : [new webpack.HotModuleReplacementPlugin()]
+    ),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      minChunks: ({ resource }) => /node_modules/.test(resource)
-    }),
-    new AssetsPlugin({
-      filename: 'assets.json',
-      path: common.output.path
+      minChunks: ({ resource }) => /node_modules/.test(resource),
     }),
     new CopyWebpackPlugin([{
       from: 'ui/static',
-      to: 'static'
+      to: 'static',
     }]),
-    new WebpackMd5Hash()
+    new WebpackMd5Hash(),
   ],
-  devtool: isProd ? 'source-map' : 'inline-source-map'
+  devtool: isProd ? 'source-map' : 'inline-source-map',
+  externals: {
+    videojs: ' videojs',
+  },
 });

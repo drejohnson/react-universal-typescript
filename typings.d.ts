@@ -4,7 +4,7 @@ declare var CLIENT_BUNDLE: boolean;
 declare var videojs;
 
 declare module '*.svg' {
-  const content: string
+  const content: any;
   export default content;
 }
 

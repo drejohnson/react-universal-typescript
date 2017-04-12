@@ -11,19 +11,25 @@ dotenv.config({ silent: true });
 
 const {
   ENV = process.env.NODE_ENV || 'development',
-  PORT = 8080
+  PORT = 8080,
 } = process.env;
 
 const isProd = ENV === 'production';
 
 const app: express.Express = express();
 
+// Tell any CSS tooling (such as Material UI) to use all vendor prefixes if the
+// user agent is not known.
+// -----------------------------------------------------------------------------
+global['navigator'] = global['navigator'] || {};
+global['navigator'].userAgent = global['navigator'].userAgent || 'all';
+
 if (isProd) {
   app.use(compression());
 } else {
   const {
     webpackDevMiddleware,
-    webpackHotMiddleware
+    webpackHotMiddleware,
   } = require('./middleware/webpack');
 
   app.use(webpackDevMiddleware);
@@ -41,5 +47,5 @@ app
   .use(renderMiddleware);
 
 app.listen(PORT, () => console.log(
-  `App Server is now running on http://localhost:${PORT}`
+  `App Server is now running on http://localhost:${PORT}`,
 ));

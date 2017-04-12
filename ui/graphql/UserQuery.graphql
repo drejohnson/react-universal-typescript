@@ -1,0 +1,13 @@
+#import "./UserFragments.graphql"
+
+query CurrentUser {
+  user {
+    ...CurrentUserObject
+  }
+}
+
+query User($auth0UserId: String) {
+  User (auth0UserId: $auth0UserId) {
+    ...CurrentUserObject
+  }
+}

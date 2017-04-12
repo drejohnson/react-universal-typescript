@@ -1,8 +1,0 @@
-
-#import "./ShowFragments.graphql"
-
-query Show($id: ID) {
-  Show (id: $id) {
-    ...ShowInfo
-  }
-}

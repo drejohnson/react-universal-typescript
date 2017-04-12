@@ -7,7 +7,7 @@ import configuration from '../../webpack/webpack.client';
 const compiler = webpack(configuration);
 
 export const webpackDevMiddleware = devMiddleware(compiler, {
-  stats: 'minimal'
+  stats: 'minimal',
 });
 
 export const webpackHotMiddleware = hotMiddleware(compiler);

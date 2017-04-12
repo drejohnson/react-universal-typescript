@@ -1,7 +1,7 @@
-import { ApolloClient, createNetworkInterface } from 'apollo-client';
+import { ApolloClient, createNetworkInterface } from 'react-apollo';
 
 const networkInterface = createNetworkInterface({
-  uri: process.env.GRAPHQL_ENDPOINT
+  uri: process.env.GRAPHQL_ENDPOINT,
 });
 
 networkInterface.use([{
@@ -10,15 +10,12 @@ networkInterface.use([{
       req.options.headers = {};
     }
     next();
-  }
+  },
 }]);
 
-export default options => new ApolloClient(Object.assign({}, {
-  networkInterface,
-  dataIdFromObject: result => {
-    if (result.id && result.__typename) {
-      return result.__typename + result.id;
-    }
-    return null;
-  }
-}, options));
+export default function configureApolloClient(options) {
+  return new ApolloClient(Object.assign({}, {
+    networkInterface,
+    dataIdFromObject: ({ id }) => id || null,
+  }, options));
+}
